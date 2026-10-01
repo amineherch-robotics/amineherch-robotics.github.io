@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mohamed Amine Herch – Robotics Software Engineer</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:wght@400;600&display=swap">
+<style>
+:root{--bg:#EEF0ED;--grid:#DADED8;--ink:#17202B;--soft:#4A5563;--lane:#1F5FBF;--tape:#E3A800;--line:#C5CBC3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10161E;--grid:#1A222C;--ink:#E8ECEF;--soft:#9AA6B3;--lane:#6FA3F0;--tape:#F0BC2E;--line:#2C3743}}
+:root[data-theme="dark"]{--bg:#10161E;--grid:#1A222C;--ink:#E8ECEF;--soft:#9AA6B3;--lane:#6FA3F0;--tape:#F0BC2E;--line:#2C3743}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.6 "Source Serif 4",Georgia,serif;
+background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:48px 48px}
+h1,h2,h3,nav{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif}
+a{color:var(--lane)}
+a:focus-visible{outline:3px solid var(--tape);outline-offset:3px}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+nav{display:flex;gap:22px;padding:20px 0;font-weight:500;font-size:16px;flex-wrap:wrap}
+nav a{color:var(--ink);text-decoration:none}
+nav a:hover{text-decoration:underline;text-decoration-color:var(--tape);text-decoration-thickness:3px}
+header{padding:40px 0 20px}
+h1{font-size:clamp(40px,8vw,76px);line-height:1;margin:0 0 18px;font-weight:800;letter-spacing:-.02em}
+.lead{font-size:clamp(19px,2.6vw,23px);max-width:34em;color:var(--soft);margin:0 0 26px}
+.map{width:100%;height:auto;display:block;margin:10px 0 0}
+.lane{stroke:var(--lane);stroke-width:3;fill:none;opacity:.55}
+.wp{fill:var(--bg);stroke:var(--lane);stroke-width:3}
+.wp.ch{fill:var(--tape);stroke:var(--ink)}
+.map text{font:600 13px "Bricolage Grotesque",Arial,sans-serif;fill:var(--soft)}
+.bot{fill:var(--tape);stroke:var(--ink);stroke-width:2.5;offset-path:path("M60 190 L200 190 L200 80 L360 80 L360 190 L560 190 L560 70");animation:go 14s linear infinite}
+@keyframes go{from{offset-distance:0%}to{offset-distance:100%}}
+@media (prefers-reduced-motion:reduce){.bot{animation:none;offset-distance:35%}}
+.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.btn{font:700 16px "Bricolage Grotesque",Arial,sans-serif;padding:11px 18px;border:2px solid var(--ink);color:var(--ink);text-decoration:none;background:var(--bg)}
+.btn.main{background:var(--tape);border-color:var(--ink);color:#17202B}
+section{padding:46px 0 10px}
+h2{font-size:clamp(28px,5vw,38px);margin:0 0 22px;letter-spacing:-.01em}
+.proj{border-left:4px solid var(--lane);padding:2px 0 2px 20px;margin:0 0 34px;background:linear-gradient(90deg,var(--bg),transparent)}
+.proj h3{margin:0 0 4px;font-size:24px}
+.meta{color:var(--soft);font-size:16px;margin:0 0 10px}
+.proj p{margin:0 0 10px;max-width:40em}
+.proj ul{margin:0 0 10px;padding-left:20px;max-width:40em}
+.stack{font-size:15px;color:var(--soft)}
+.tl{list-style:none;margin:0;padding:0;border-left:4px solid var(--line)}
+.tl li{position:relative;padding:0 0 22px 22px}
+.tl li::before{content:"";position:absolute;left:-10px;top:8px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--lane)}
+.tl b{font-family:"Bricolage Grotesque",Arial,sans-serif;font-size:19px}
+.tl span{display:block;color:var(--soft);font-size:16px}
+.sk{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px 30px}
+.sk h3{font-size:18px;margin:0 0 4px}
+.sk p{margin:0;font-size:17px}
+footer{padding:50px 0 60px}
+footer p{max-width:36em}
+@media (max-width:520px){body{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav aria-label="Sections"><a href="#projects">Projects</a><a href="#path">Background</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
+
+<header>
+<h1>Mohamed Amine Herch</h1>
+<p class="lead">Industrial electronics engineer in mobile robotics and embedded systems. I build with ROS 2, multi-robot navigation and digital twins. Open to junior robotics software roles in Europe.</p>
+<svg class="map" viewBox="0 0 640 250" role="img" aria-label="Navigation graph with a robot driving between waypoints">
+<path class="lane" d="M60 190 L200 190 L200 80 L360 80 L360 190 L560 190 L560 70"/>
+<circle class="wp ch" cx="60" cy="190" r="11"/><circle class="wp" cx="200" cy="190" r="9"/><circle class="wp" cx="200" cy="80" r="9"/>
+<circle class="wp" cx="360" cy="80" r="9"/><circle class="wp" cx="360" cy="190" r="9"/><circle class="wp" cx="560" cy="190" r="9"/><circle class="wp" cx="560" cy="70" r="9"/>
+<text x="40" y="224">charger</text><text x="520" y="48">goal</text>
+<circle class="bot" r="9"/>
+</svg>
+<div class="links">
+<a class="btn main" href="mailto:mohamed.amine.herch@uqtr.ca">Email me</a>
+<a class="btn" href="https://github.com/Mohamed-Amine-Herch/mir250-600">GitHub</a>
+<a class="btn" href="https://www.linkedin.com/in/mohamed-amine-herch-1343092a4">LinkedIn</a>
+</div>
+</header>
+
+<section id="projects">
+<h2>Projects</h2>
+
+<article class="proj">
+<h3>Fleet management for mixed AMRs with a Unity digital twin</h3>
+<p class="meta">Final-year project, CNIMI laboratory, UQTR, Québec, Canada, 2026</p>
+<p>One system that coordinates three different robots (MiR250, MiR600 and Omron LD-90) from a single task interface, with a live 3D twin to watch and test missions.</p>
+<ul>
+<li>Wrote one driver per robot brand: MiR over rosbridge WebSocket and REST, Omron over its ARCL protocol, so every robot looks the same to the fleet layer.</li>
+<li>Orchestrated the fleet with Open-RMF and built a custom task client for goto, patrol, loop, delivery and charge missions.</li>
+<li>Connected a Unity digital twin to ROS 2, with direct control of one robot or fleet-wide dispatch.</li>
+<li>Migrated the MiR software stack from ROS 1 to ROS 2 Jazzy and chose Unity after comparing Gazebo, Isaac Sim, Unity and Unreal Engine.</li>
+</ul>
+<p class="stack">ROS 2 Jazzy, Open-RMF, Nav2, Unity, Python, Ubuntu 24.04</p>
+<p><a href="https://github.com/Mohamed-Amine-Herch/mir250-600">Source code on GitHub</a></p>
+</article>
+
+<article class="proj">
+<h3>Autonomous navigation and SLAM prototype</h3>
+<p class="meta">Internship, Rosenberger, Sousse, 2025</p>
+<p>Simulated autonomous navigation and SLAM under ROS, then built a small physical prototype: Raspberry Pi, LiDAR and DC motors.</p>
+<p class="stack">ROS, SLAM, LiDAR, Raspberry Pi</p>
+</article>
+
+<article class="proj">
+<h3>FabLab ENISo</h3>
+<p class="meta">Maker since 2024</p>
+<p>Supervise student projects and run robotics and electronics training sessions. President of ENISO Team in 2024–2025.</p>
+<p class="stack">3D printing, laser engraving, 3D scanning, embedded electronics</p>
+</article>
+
+<article class="proj">
+<h3>SmartTime IoT: connected attendance system</h3>
+<p class="meta">Academic project</p>
+<p>Tracks employee attendance with RFID badges read by an ESP8266. Data is published over MQTT and shown on a Node-RED dashboard.</p>
+<p class="stack">ESP8266, RFID, MQTT, HiveMQ, Node-RED</p>
+</article>
+
+<article class="proj">
+<h3>Sign language recognition</h3>
+<p class="meta">Academic project</p>
+<p>Gesture recognition built with MATLAB, using image processing and machine learning.</p>
+<p class="stack">MATLAB, image processing, machine learning</p>
+</article>
+
+<article class="proj">
+<h3>Line-following robot</h3>
+<p class="meta">Academic project</p>
+<p>Autonomous robot that follows a track with infrared sensors and PID control.</p>
+<p class="stack">IR sensors, PID control</p>
+</article>
+</section>
+
+<section id="path">
+<h2>Background</h2>
+<ul class="tl">
+<li><b>Industrial Electronics Engineering, ENISo</b><span>École Nationale d'Ingénieurs de Sousse, 2023–2026</span></li>
+<li><b>Final-year project, UQTR</b><span>CNIMI laboratory, Drummondville, Québec, 2026</span></li>
+<li><b>Intern, Rosenberger</b><span>Sousse, 2025. Navigation and SLAM under ROS</span></li>
+<li><b>President, ENISO Team</b><span>2024–2025. Led a multidisciplinary student team, ran SolidWorks, MATLAB, STM32, Arduino and ESP32 trainings, coordinated student events including ESC V9</span></li>
+<li><b>Intern, LEONI</b><span>Sousse, 2024. Cable harness production</span></li>
+<li><b>Scientific preparatory cycle, IPEI</b><span>Sfax 2021–2022, then Monastir 2022–2023</span></li>
+</ul>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<div class="sk">
+<div><h3>Robotics</h3><p>ROS 2, Open-RMF, Nav2, SLAM, RViz2, Unity digital twins</p></div>
+<div><h3>Programming</h3><p>C/C++, Python (rclpy), MATLAB, Node-RED, Git, Linux</p></div>
+<div><h3>Embedded</h3><p>STM32, ESP32, ESP8266, Arduino, FPGA/VHDL, RFID, MQTT, serial communication</p></div>
+<div><h3>Design and fabrication</h3><p>Altium, Proteus, Xilinx ISE, 3D printing, laser engraving, 3D scanning</p></div>
+<div><h3>Languages</h3><p>Arabic (native), French (intermediate), English (intermediate)</p></div>
+</div>
+</section>
+
+<footer id="contact">
+<h2>Contact</h2>
+<p>I am looking for a junior robotics software engineer role in Europe, and I am also open to a Master's or PhD in robotics. Write to me at <a href="mailto:mohamed.amine.herch@uqtr.ca">mohamed.amine.herch@uqtr.ca</a>.</p>
+</footer>
+</div>
+</body>
+</html>
