@@ -115,8 +115,12 @@ h2::before{content:"";width:14px;height:14px;background:var(--tape);border:2px s
 .gal .wide img{height:380px}
 .gal figcaption{padding:12px 14px;font-size:15px;color:var(--soft)}
 .gal figcaption b{display:block;font:700 17px "Bricolage Grotesque",Arial,sans-serif;color:var(--ink)}
-@media (max-width:600px){.gal{grid-template-columns:1fr}.gal img,.gal .wide img{height:220px}}
+@media (max-width:600px){.gal,.tr{grid-template-columns:1fr}.gal img,.gal .wide img{height:220px}}
 
+.tr{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:0 0 22px}
+.trc{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--tape);padding:14px 16px}
+.trc h3{font-size:17px;margin:0 0 10px}
+.trc .chips{margin:0}
 /* timeline */
 .tl{list-style:none;margin:0;padding:0;border-left:4px solid var(--line)}
 .tl li{position:relative;padding:0 0 24px 24px}
@@ -166,7 +170,7 @@ section{padding:18px 0 0;break-inside:avoid-page}
 <div class="top">
 <div class="wrap">
 <a class="brand" href="#">M. A. Herch</a>
-<nav aria-label="Sections"><a href="#projects">Projects</a><a href="#leadership">Leadership</a><a href="#path">Experience</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
+<nav aria-label="Sections"><a href="#projects">Projects</a><a href="#leadership">Leadership</a><a href="#training">Training</a><a href="#path">Experience</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
 <button id="theme" type="button" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg></button>
 </div>
 </div>
@@ -275,13 +279,26 @@ section{padding:18px 0 0;break-inside:avoid-page}
 
 <section id="leadership">
 <h2>Leadership and competitions</h2>
-<p class="intro">As president of ENISO Team in 2024–2025, I led a multidisciplinary student club, ran trainings in SolidWorks, MATLAB, STM32, Arduino and ESP32, coordinated major events including ESC V9, and took robots to national competitions.</p>
+<p class="intro">As president of ENISO Team in 2024–2025, I led a multidisciplinary club of engineering students, coordinated major events including ESC V9, and took our robots to national competitions.</p>
 <div class="gal">
-<figure class="wide"><img src="img/club-team.jpg" alt="Large group photo of ENISO Team members in front of the engineering school" loading="lazy" width="1200" height="906"><figcaption><b>President, ENISO Team</b>The robotics club I led in 2024–2025 at ENISo</figcaption></figure>
+<figure class="wide"><img src="img/club-team.jpg" alt="Large group photo of ENISO Team members in front of the engineering school" loading="lazy" width="1200" height="906"><figcaption><b>President, ENISO Team · 2024–2025</b>The robotics club I led at ENISo</figcaption></figure>
 <figure><img src="img/npc-winner.jpg" alt="Team holding a 1st place All Terrain Winner cheque with their robot" loading="lazy" width="1200" height="800"><figcaption><b>1st place, All Terrain · NPC 3.0</b>Our robot won its category. Photo: Jawhara FM</figcaption></figure>
-<figure><img src="img/arduino-session.jpg" alt="Group photo after an Arduino training session in a classroom" loading="lazy" width="1200" height="900"><figcaption><b>Trainer, Arduino sessions</b>Hands-on embedded programming for club members</figcaption></figure>
-<figure><img src="img/fablab-trainer.jpg" style="object-position:50% 35%" alt="Showing students how to operate a CNC milling machine at the FabLab" loading="lazy" width="900" height="1200"><figcaption><b>Trainer, FabLab ENISo</b>Teaching students to run the CNC milling machine</figcaption></figure>
 <figure><img style="object-position:50% 65%" src="img/enis-robot.jpg" alt="ENISO Team members with their robots at night after the competition" loading="lazy" width="1200" height="900"><figcaption><b>ENIS Robot and ENSIT Robots</b>Competing with the club's robots at national events</figcaption></figure>
+</div>
+</section>
+
+<section id="training">
+<h2>Technical trainer</h2>
+<p class="intro">I teach what I build. I run hands-on trainings in embedded systems, microcontrollers and robotics for engineering students, at ENISO Team and at FabLab ENISo.</p>
+<div class="tr">
+<div class="trc"><h3>Embedded systems and microcontrollers</h3><ul class="chips"><li class="chip">STM32</li><li class="chip">Arduino</li><li class="chip">ESP32</li><li class="chip">Sensors and actuators</li></ul></div>
+<div class="trc"><h3>Robotics</h3><ul class="chips"><li class="chip">Robot prototyping</li><li class="chip">Mechatronics</li><li class="chip">Project supervision</li></ul></div>
+<div class="trc"><h3>Design and simulation</h3><ul class="chips"><li class="chip">SolidWorks</li><li class="chip">MATLAB</li></ul></div>
+<div class="trc"><h3>Digital fabrication</h3><ul class="chips"><li class="chip">3D printing</li><li class="chip">Laser engraving</li><li class="chip">3D scanning</li><li class="chip">CNC milling</li></ul></div>
+</div>
+<div class="gal">
+<figure><img src="img/arduino-session.jpg" alt="Group photo after an Arduino training session in a classroom" loading="lazy" width="1200" height="900"><figcaption><b>Arduino sessions · ENISO Team</b>Hands-on microcontroller programming for club members</figcaption></figure>
+<figure><img src="img/fablab-trainer.jpg" style="object-position:50% 35%" alt="Showing students how to operate a CNC milling machine at the FabLab" loading="lazy" width="900" height="1200"><figcaption><b>Workshops · FabLab ENISo</b>Teaching students to run the CNC milling machine</figcaption></figure>
 </div>
 </section>
 
