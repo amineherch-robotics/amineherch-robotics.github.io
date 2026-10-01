@@ -11,25 +11,25 @@
 <meta property="og:description" content="ROS 2, Open-RMF multi-robot fleets, Nav2 and Unity digital twins.">
 <meta property="og:url" content="https://amineherch-robotics.github.io/">
 <meta property="og:image" content="https://amineherch-robotics.github.io/photo.jpg">
-<meta name="theme-color" content="#1F5FBF">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231F5FBF'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='28' fill='white' text-anchor='middle'%3EMH%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#080711">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238B5CF6'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='28' fill='white' text-anchor='middle'%3EMH%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:wght@400;600&display=swap">
 <style>
-:root{--bg:#EEF0ED;--card:#F8F9F7;--grid:#DADED8;--ink:#17202B;--soft:#4A5563;--lane:#1F5FBF;--lane-bg:#E2EAF7;--tape:#E3A800;--line:#C5CBC3;
+:root{--bg:#080711;--card:rgba(17,16,31,.72);--grid:#1A1830;--ink:#F8FAFC;--soft:#A1A1AA;--lane:#A78BFA;--lane-bg:rgba(139,92,246,.16);--tape:#22D3EE;--line:rgba(167,139,250,.22);color-scheme:dark;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10161E;--card:#161E28;--grid:#1A222C;--ink:#E8ECEF;--soft:#9AA6B3;--lane:#6FA3F0;--lane-bg:#1A2A40;--tape:#F0BC2E;--line:#2C3743}}
-:root[data-theme="dark"]{--bg:#10161E;--card:#161E28;--grid:#1A222C;--ink:#E8ECEF;--soft:#9AA6B3;--lane:#6FA3F0;--lane-bg:#1A2A40;--tape:#F0BC2E;--line:#2C3743}
+:root[data-theme="light"]{--bg:#EEF0ED;--card:#F8F9F7;--grid:#DADED8;--ink:#17202B;--soft:#4A5563;--lane:#5B3BC4;--lane-bg:#ECE6FB;--tape:#0E9FB8;--line:#C5CBC3;color-scheme:light}
+/* deep-space violet/cyan lighting behind everything */
 html{scroll-padding-top:calc(70px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.6 "Source Serif 4",Georgia,serif;
-background-image:radial-gradient(900px 600px at 85% -10%,color-mix(in srgb,var(--lane) 16%,transparent),transparent 70%),radial-gradient(700px 500px at -10% 40%,color-mix(in srgb,var(--tape) 10%,transparent),transparent 70%);background-attachment:fixed}
+background-image:radial-gradient(1000px 700px at 80% -15%,rgba(139,92,246,.30),transparent 65%),radial-gradient(800px 600px at -15% 35%,rgba(79,70,229,.22),transparent 65%),radial-gradient(900px 700px at 110% 95%,rgba(34,211,238,.13),transparent 65%);background-attachment:fixed}
 /* circuit-board background, drawn as a mask so it follows the theme colours */
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--lane);opacity:.16;
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(160deg,#8B5CF6,#22D3EE);opacity:.20;
 --pcb:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' fill='none' stroke='%23000' stroke-width='1.6'%3E%3Cpath d='M14 30H70l20 20h50M24 92h30l20 20v46M104 76v40l22 22h62M156 18v38l18 18h28M86 176h40l22 22M190 110v30M14 130v50'/%3E%3Ccircle cx='14' cy='30' r='4'/%3E%3Ccircle cx='140' cy='50' r='4'/%3E%3Ccircle cx='24' cy='92' r='4'/%3E%3Ccircle cx='74' cy='158' r='4'/%3E%3Ccircle cx='104' cy='76' r='4'/%3E%3Ccircle cx='188' cy='138' r='4'/%3E%3Ccircle cx='156' cy='18' r='4'/%3E%3Ccircle cx='202' cy='74' r='4'/%3E%3Ccircle cx='86' cy='176' r='4'/%3E%3Ccircle cx='190' cy='110' r='4'/%3E%3Ccircle cx='14' cy='130' r='4'/%3E%3Ccircle cx='14' cy='180' r='4'/%3E%3Crect x='150' y='160' width='34' height='34' rx='3'/%3E%3Cpath d='M156 160v-8M167 160v-8M178 160v-8M156 194v8M167 194v8M178 194v8'/%3E%3Ccircle cx='190' cy='140' r='2' fill='%23000'/%3E%3Ccircle cx='54' cy='92' r='2' fill='%23000'/%3E%3Ccircle cx='70' cy='30' r='2' fill='%23000'/%3E%3C/svg%3E");
 -webkit-mask:var(--pcb) 0 0/220px 220px;mask:var(--pcb) 0 0/220px 220px}
-:root[data-theme="dark"] body::before{opacity:.24}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body::before{opacity:.24}}
+:root[data-theme="light"] body::before{opacity:.14}
+:root[data-theme="light"] body{background-image:none}
 h1,h2,h3,nav,.btn,.chip,.stat b,.lbl{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif}
 a{color:var(--lane)}
 a:focus-visible,button:focus-visible{outline:3px solid var(--tape);outline-offset:3px}
@@ -357,7 +357,7 @@ section{padding:18px 0 0;break-inside:avoid-page}
 var r=document.documentElement,b=document.getElementById('theme');
 try{var t=localStorage.getItem('theme');if(t)r.setAttribute('data-theme',t);}catch(e){}
 b.addEventListener('click',function(){
-var dark=r.getAttribute('data-theme')?r.getAttribute('data-theme')==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+var dark=r.getAttribute('data-theme')!=='light';
 var n=dark?'light':'dark';r.setAttribute('data-theme',n);
 try{localStorage.setItem('theme',n);}catch(e){}
 });
