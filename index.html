@@ -124,6 +124,15 @@ h2::before{content:"";width:14px;height:14px;background:var(--tape);border:2px s
 .tl b{font-family:"Bricolage Grotesque",Arial,sans-serif;font-size:19px}
 .tl span{display:block;color:var(--soft);font-size:16px}
 .tl .yr{display:inline-block;font:700 13px "Bricolage Grotesque",Arial,sans-serif;color:var(--lane);background:var(--lane-bg);padding:1px 8px;margin:0 0 4px}
+.tl .pts{margin:6px 0 0;padding-left:18px;max-width:42em;font-size:17px}
+.tl .pts li{padding:0;margin:0 0 4px}
+.tl .pts li::before{display:none}
+.tl .what{margin:6px 0 0;font-style:italic}
+.edu{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.ed{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--lane);padding:16px 18px}
+.ed h3{font-size:19px;margin:6px 0 4px;line-height:1.25}
+.ed p{margin:0;color:var(--soft);font-size:16px}
+.ed .yr{display:inline-block;font:700 13px "Bricolage Grotesque",Arial,sans-serif;color:var(--lane);background:var(--lane-bg);padding:1px 8px}
 
 /* skills */
 .sk{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px 30px}
@@ -157,7 +166,7 @@ section{padding:18px 0 0;break-inside:avoid-page}
 <div class="top">
 <div class="wrap">
 <a class="brand" href="#">M. A. Herch</a>
-<nav aria-label="Sections"><a href="#projects">Projects</a><a href="#leadership">Leadership</a><a href="#path">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
+<nav aria-label="Sections"><a href="#projects">Projects</a><a href="#leadership">Leadership</a><a href="#path">Experience</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
 <button id="theme" type="button" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg></button>
 </div>
 </div>
@@ -266,7 +275,7 @@ section{padding:18px 0 0;break-inside:avoid-page}
 
 <section id="leadership">
 <h2>Leadership and competitions</h2>
-<p class="intro">As president of ENISO Team in 2024–2025, I led a multidisciplinary student club, ran hands-on trainings and took robots to national competitions.</p>
+<p class="intro">As president of ENISO Team in 2024–2025, I led a multidisciplinary student club, ran trainings in SolidWorks, MATLAB, STM32, Arduino and ESP32, coordinated major events including ESC V9, and took robots to national competitions.</p>
 <div class="gal">
 <figure class="wide"><img src="img/club-team.jpg" alt="Large group photo of ENISO Team members in front of the engineering school" loading="lazy" width="1200" height="906"><figcaption><b>President, ENISO Team</b>The robotics club I led in 2024–2025 at ENISo</figcaption></figure>
 <figure><img src="img/npc-winner.jpg" alt="Team holding a 1st place All Terrain Winner cheque with their robot" loading="lazy" width="1200" height="800"><figcaption><b>1st place, All Terrain · NPC 3.0</b>Our robot won its category. Photo: Jawhara FM</figcaption></figure>
@@ -277,15 +286,27 @@ section{padding:18px 0 0;break-inside:avoid-page}
 </section>
 
 <section id="path">
-<h2>Experience and education</h2>
+<h2>Experience</h2>
 <ul class="tl">
-<li><span class="yr">2026</span><b>Final-year project, UQTR</b><span>CNIMI laboratory, Drummondville, Québec. Multi-robot fleet management and digital twin</span></li>
-<li><span class="yr">2023 – 2026</span><b>Industrial Electronics Engineering, ENISo</b><span>École Nationale d'Ingénieurs de Sousse</span></li>
-<li><span class="yr">2025</span><b>Intern, Rosenberger</b><span>Sousse. Navigation and SLAM under ROS</span></li>
-<li><span class="yr">2024 – 2025</span><b>President, ENISO Team</b><span>Led a multidisciplinary student team, ran SolidWorks, MATLAB, STM32, Arduino and ESP32 trainings, coordinated student events including ESC V9</span></li>
-<li><span class="yr">2024</span><b>Intern, LEONI</b><span>Sousse. Cable harness production</span></li>
-<li><span class="yr">2021 – 2023</span><b>Scientific preparatory cycle, IPEI</b><span>Sfax 2021–2022, then Monastir 2022–2023</span></li>
+<li><span class="yr">2026</span><b>Final-year project · CNIMI Laboratory, UQTR</b><span>Drummondville, Québec, Canada</span>
+<p class="what">Heterogeneous AMR fleet integration and digital twin supervision.</p>
+<ul class="pts"><li>Built a heterogeneous AMR fleet management system with ROS 2 Jazzy and Open-RMF, coordinating robots from different manufacturers.</li><li>Integrated MiR250 + UR10e, MiR600 and Omron LD-90 into Open-RMF: maps, navigation routes, traffic rules and fleet coordination.</li><li>Developed a Unity digital twin for real-time 3D visualisation, robot state monitoring and fleet supervision through ROS-TCP-Connector.</li></ul></li>
+<li><span class="yr">2024 – present</span><b>Senior Maker · FabLab ENISo</b><span>Sousse, Tunisia</span>
+<ul class="pts"><li>Mentor and supervise robotics and mechatronics projects, from concept and design through prototyping, integration and testing.</li><li>Deliver technical trainings and hands-on workshops in robotics, electronics and digital fabrication.</li></ul></li>
+<li><span class="yr">2025</span><b>Intern · Rosenberger</b><span>Sousse, Tunisia</span>
+<ul class="pts"><li>Developed autonomous navigation and mapping simulations with ROS and SLAM.</li><li>Designed and built a robot prototype with a Raspberry Pi, a LiDAR and DC motors with encoders.</li></ul></li>
+<li><span class="yr">2024</span><b>Intern · LEONI</b><span>Sousse, Tunisia</span>
+<ul class="pts"><li>Followed every stage of wiring harness production, and studied assembly processes and quality control procedures.</li></ul></li>
 </ul>
+</section>
+
+<section id="education">
+<h2>Education</h2>
+<div class="edu">
+<div class="ed"><span class="yr">2023 – 2026</span><h3>Engineering Degree in Industrial Electronics</h3><p>National Engineering School of Sousse (ENISo), Tunisia</p></div>
+<div class="ed"><span class="yr">2022 – 2023</span><h3>Scientific Preparatory Cycle</h3><p>Preparatory Institute for Engineering Studies, Monastir, Tunisia</p></div>
+<div class="ed"><span class="yr">2021 – 2022</span><h3>Scientific Preparatory Cycle</h3><p>Preparatory Institute for Engineering Studies, Sfax, Tunisia</p></div>
+</div>
 </section>
 
 <section id="skills">
