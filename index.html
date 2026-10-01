@@ -23,7 +23,13 @@ html{scroll-padding-top:calc(70px + env(safe-area-inset-top,0px));scroll-behavio
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.6 "Source Serif 4",Georgia,serif;
-background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:48px 48px}
+background-image:radial-gradient(900px 600px at 85% -10%,color-mix(in srgb,var(--lane) 16%,transparent),transparent 70%),radial-gradient(700px 500px at -10% 40%,color-mix(in srgb,var(--tape) 10%,transparent),transparent 70%);background-attachment:fixed}
+/* circuit-board background, drawn as a mask so it follows the theme colours */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--lane);opacity:.16;
+--pcb:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' fill='none' stroke='%23000' stroke-width='1.6'%3E%3Cpath d='M14 30H70l20 20h50M24 92h30l20 20v46M104 76v40l22 22h62M156 18v38l18 18h28M86 176h40l22 22M190 110v30M14 130v50'/%3E%3Ccircle cx='14' cy='30' r='4'/%3E%3Ccircle cx='140' cy='50' r='4'/%3E%3Ccircle cx='24' cy='92' r='4'/%3E%3Ccircle cx='74' cy='158' r='4'/%3E%3Ccircle cx='104' cy='76' r='4'/%3E%3Ccircle cx='188' cy='138' r='4'/%3E%3Ccircle cx='156' cy='18' r='4'/%3E%3Ccircle cx='202' cy='74' r='4'/%3E%3Ccircle cx='86' cy='176' r='4'/%3E%3Ccircle cx='190' cy='110' r='4'/%3E%3Ccircle cx='14' cy='130' r='4'/%3E%3Ccircle cx='14' cy='180' r='4'/%3E%3Crect x='150' y='160' width='34' height='34' rx='3'/%3E%3Cpath d='M156 160v-8M167 160v-8M178 160v-8M156 194v8M167 194v8M178 194v8'/%3E%3Ccircle cx='190' cy='140' r='2' fill='%23000'/%3E%3Ccircle cx='54' cy='92' r='2' fill='%23000'/%3E%3Ccircle cx='70' cy='30' r='2' fill='%23000'/%3E%3C/svg%3E");
+-webkit-mask:var(--pcb) 0 0/220px 220px;mask:var(--pcb) 0 0/220px 220px}
+:root[data-theme="dark"] body::before{opacity:.24}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body::before{opacity:.24}}
 h1,h2,h3,nav,.btn,.chip,.stat b,.lbl{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif}
 a{color:var(--lane)}
 a:focus-visible,button:focus-visible{outline:3px solid var(--tape);outline-offset:3px}
@@ -170,7 +176,7 @@ section{padding:18px 0 0;break-inside:avoid-page}
 <div class="links">
 <a class="btn main" href="mailto:mohamed.amine.herch@uqtr.ca"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2zm2 2v.5l8 5 8-5V7zm16 2.8-8 5-8-5V17h16z"/></svg>Email me</a>
 <a class="btn" href="https://www.linkedin.com/in/mohamed-amine-herch-1343092a4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zm7 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg>LinkedIn</a>
-<a class="btn" href="https://github.com/Mohamed-Amine-Herch/mir250-600"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>GitHub</a>
+<a class="btn" href="https://github.com/amineherch-robotics"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>GitHub</a>
 </div>
 
 <div class="stats">
@@ -299,7 +305,7 @@ section{padding:18px 0 0;break-inside:avoid-page}
 <div class="links">
 <a class="btn main" href="mailto:mohamed.amine.herch@uqtr.ca">mohamed.amine.herch@uqtr.ca</a>
 <a class="btn" href="https://www.linkedin.com/in/mohamed-amine-herch-1343092a4">LinkedIn</a>
-<a class="btn" href="https://github.com/Mohamed-Amine-Herch">GitHub</a>
+<a class="btn" href="https://github.com/amineherch-robotics">GitHub</a>
 </div>
 </div>
 </section>
