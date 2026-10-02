@@ -114,18 +114,7 @@
 <a class="btn btn-primary sm" href="reports/pfe-cnimi-herch-2026.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span>Read the full report</span><span class="tag">PDF · FR</span></a>
 </div>
 
-<div class="arch" role="img" aria-label="System architecture: the task client sends missions to the Open-RMF core, which drives a fleet adapter. The adapter talks to one driver per robot brand, and a Unity digital twin is connected to ROS 2.">
-<p class="arch-k">SYSTEM ARCHITECTURE</p>
-<div class="node">Task client<small>goto · patrol · loop · delivery · charge</small></div>
-<div class="flow"><i></i><em>task requests</em></div>
-<div class="node">Open-RMF core<small>dispatcher + traffic schedule</small></div>
-<div class="flow"><i></i><em>follow path</em></div>
-<div class="row"><div class="node">Fleet adapter<small>RMF ⇄ drivers, fleet state</small></div><div class="node twin">Unity digital twin<small>ROS-TCP-Connector</small></div></div>
-<div class="flow"><i></i><em>one driver per brand</em></div>
-<div class="row"><div class="node">MiR driver<small>rosbridge + REST</small></div><div class="node">Omron driver<small>ARCL</small></div></div>
-<div class="flow"><i></i><em>onboard navigation</em></div>
-<div class="row"><div class="node bot">MiR250 · MiR600</div><div class="node bot">Omron LD-90</div></div>
-</div>
+<figure class="feat-shot"><a href="img/pfe-unity-interface.jpg" target="_blank" rel="noopener"><img src="img/pfe-unity-interface.jpg" alt="Unity digital twin interface: robot status cards for Omron LD-90, MiR600 and MiR250, mission panel, 3D view of the CNIMI lab and mission queue" loading="lazy" width="1600" height="900"></a><figcaption>The Unity supervision interface: live status of the three robots, missions in Simple or Fleet mode, and the 3D lab.</figcaption></figure>
 </div>
 
 <div class="pillars">
@@ -135,6 +124,15 @@
 <ul class="pts"><li><b>Two fleets</b> (MiR and Omron) bid for each task; the dispatcher picks the earliest finish time.</li><li><b>Navigation graph</b> drawn on the lab map: lanes, waypoints and charging stations.</li><li><b>Custom fleet adapter</b> and mission client for goto, patrol, loop, delivery and charge.</li><li><b>Battery monitor</b> sends a robot to charge at 20&nbsp;% and frees it again at 40&nbsp;%.</li></ul></div>
 <div class="pillar"><span class="pl-n">03</span><h4>Supervise</h4><p class="pl-sub">A live Unity twin of the CNIMI lab</p>
 <ul class="pts"><li><b>Virtual lab</b> rebuilt on the robots' own map, with URDF models of the three robots.</li><li><b>Simple mode:</b> go to, dock, stop, jog and calibrate each robot directly.</li><li><b>Fleet mode:</b> missions sent through Open-RMF, whole fleet shown live.</li><li>Every mission logged with duration and battery use; Unity chosen after comparing Gazebo, Isaac Sim and Unreal.</li></ul></div>
+</div>
+
+<div class="figs">
+<p class="lbl">ARCHITECTURE · FIGURES FROM THE REPORT</p>
+<div class="fig-grid">
+<figure class="paper"><a href="img/pfe-arch-openrmf.png" target="_blank" rel="noopener"><img src="img/pfe-arch-openrmf.png" alt="Open-RMF integration architecture in five layers: mission client, Open-RMF core, two fleet adapters (mir_fleet and omron_fleet), robot APIs (REST for MiR, ROS 2 for Omron), and the MiR250, MiR600 and Omron LD-90" loading="lazy" width="1400" height="880"></a><figcaption><b>Fig. 3.4 · Open-RMF integration</b>Five layers, two fleets, from mission request to the physical robot.</figcaption></figure>
+<figure class="paper"><a href="img/pfe-arch-unity-ros2.jpg" target="_blank" rel="noopener"><img src="img/pfe-arch-unity-ros2.jpg" alt="Unity to ROS 2 communication: Unity publishes and subscribes through ros_tcp_endpoint (TCP 10000) to three bridge nodes: MiR, Omron and Open-RMF" loading="lazy" width="1100" height="1100"></a><figcaption><b>Fig. 3.9 · Unity ↔ ROS 2</b>ROS-TCP-Connector and one bridge node per mode: MiR, Omron, Open-RMF.</figcaption></figure>
+<figure><a href="img/pfe-virtual-vs-real.jpg" target="_blank" rel="noopener"><img src="img/pfe-virtual-vs-real.jpg" alt="The CNIMI lab rebuilt in Unity (top) next to a photo of the real lab (bottom)" loading="lazy" width="1200" height="1161"></a><figcaption><b>Fig. 3.7 · Virtual vs real lab</b>The CNIMI lab rebuilt in Unity (top) and the real lab (bottom).</figcaption></figure>
+</div>
 </div>
 
 <div class="results">
@@ -150,12 +148,17 @@
 </article>
 
 <div class="pgrid">
-<article class="proj glass" data-reveal>
-<div class="pvis" aria-hidden="true"><svg viewBox="0 0 120 70" class="v-lidar"><circle cx="60" cy="40" r="6"/><g class="rays"><path d="M60 40L20 10M60 40L40 4M60 40L60 2M60 40L80 4M60 40L100 10M60 40L112 30"/></g><path class="scan" d="M10 60 Q30 20 60 14 Q92 18 112 52"/></svg></div>
+<article class="proj glass wide" data-reveal>
+<div class="proj-media">
+<a href="img/slam-prototype.jpg" target="_blank" rel="noopener"><img src="img/slam-prototype.jpg" alt="The physical robot prototype: RPLIDAR on a laser-cut acrylic chassis with DC motors, Raspberry Pi and ESP32" loading="lazy" width="569" height="760"><span>Physical prototype</span></a>
+<a href="img/slam-gazebo.jpg" target="_blank" rel="noopener"><img src="img/slam-gazebo.jpg" alt="Gazebo simulation of the robot scanning the factory scene with its LiDAR" loading="lazy" width="1200" height="680"><span>Gazebo simulation</span></a>
+<a href="img/slam-map.jpg" target="_blank" rel="noopener"><img src="img/slam-map.jpg" alt="Occupancy map of the simulated factory built with SLAM, shown in RViz" loading="lazy" width="1200" height="805"><span>SLAM map in RViz</span></a>
+</div>
 <span class="pnum">02 · INTERNSHIP · ROSENBERGER · 2025</span>
 <h3>Autonomous navigation and SLAM prototype</h3>
-<p>Autonomous navigation and mapping simulations with ROS and SLAM, then a physical prototype with a Raspberry Pi, a LiDAR and DC motors with encoders.</p>
-<ul class="chips"><li>ROS</li><li>SLAM</li><li>LiDAR</li><li>Raspberry Pi</li><li>Encoders</li></ul>
+<p>A mobile robot for moving boxes from storage to workstations. I modelled it in URDF, simulated it in a Gazebo scene of the plant, built the map with SLAM and tested autonomous navigation in RViz. Then I built the physical prototype: SolidWorks parts, 3D-printed sensor mounts, a laser-cut chassis, a Raspberry Pi 4 with RPLIDAR and camera, and two DC motors with encoders driven by an ESP32 through BTS7960 H-bridges.</p>
+<ul class="chips"><li>ROS 2</li><li>Gazebo</li><li>RViz</li><li>SLAM</li><li>LiDAR</li><li>Raspberry Pi</li><li>ESP32</li><li>SolidWorks</li><li>3D printing</li><li>Laser cutting</li></ul>
+<a class="btn btn-ghost sm doc" href="reports/stage-rosenberger-herch-2025.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Read the internship report<span class="tag">PDF · FR</span></a>
 </article>
 
 <article class="proj glass" data-reveal>
@@ -192,16 +195,16 @@
 <h2 data-reveal>From industrial reality <span class="grad">to intelligent systems</span></h2>
 <div class="tl">
 <div class="tl-line" aria-hidden="true"><div class="tl-fill"></div></div>
-<div class="tl-item" data-reveal><span class="yr">2026</span><div class="tl-card glass"><h3>Final-year project · CNIMI Laboratory, UQTR</h3><p class="meta">Drummondville, Québec, Canada</p><p class="what">Heterogeneous AMR fleet integration and digital twin supervision.</p>
+<div class="tl-item" data-reveal><span class="yr">2026</span><div class="tl-card glass has-media"><figure class="tl-media"><img src="img/pfe-unity-interface.jpg" alt="Unity supervision interface of the robot fleet" loading="lazy"></figure><div class="tl-body"><h3>Final-year project · CNIMI Laboratory, UQTR</h3><p class="meta">Drummondville, Québec, Canada</p><p class="what">Heterogeneous AMR fleet integration and digital twin supervision.</p>
 <a class="btn btn-ghost sm doc" href="reports/pfe-cnimi-herch-2026.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Read the final-year report<span class="tag">PDF · FR</span></a>
-<ul class="pts"><li>Built a heterogeneous AMR fleet management system with ROS 2 Jazzy and Open-RMF, coordinating robots from different manufacturers.</li><li>Integrated MiR250, MiR600 and Omron LD-90 into Open-RMF: maps, navigation routes, traffic rules and fleet coordination.</li><li>Developed a Unity digital twin for real-time 3D visualisation, robot state monitoring and fleet supervision through ROS-TCP-Connector.</li></ul></div></div>
-<div class="tl-item" data-reveal><span class="yr">2024 – present</span><div class="tl-card glass"><h3>Senior Maker · FabLab ENISo</h3><p class="meta">Sousse, Tunisia</p>
-<ul class="pts"><li>Mentor and supervise robotics and mechatronics projects, from concept and design through prototyping, integration and testing.</li><li>Deliver technical trainings and hands-on workshops in robotics, electronics and digital fabrication.</li></ul></div></div>
-<div class="tl-item" data-reveal><span class="yr">2025</span><div class="tl-card glass"><h3>Intern · Rosenberger</h3><p class="meta">Sousse, Tunisia</p>
+<ul class="pts"><li>Built a heterogeneous AMR fleet management system with ROS 2 Jazzy and Open-RMF, coordinating robots from different manufacturers.</li><li>Integrated MiR250, MiR600 and Omron LD-90 into Open-RMF: maps, navigation routes, traffic rules and fleet coordination.</li><li>Developed a Unity digital twin for real-time 3D visualisation, robot state monitoring and fleet supervision through ROS-TCP-Connector.</li></ul></div></div></div>
+<div class="tl-item" data-reveal><span class="yr">2024 – present</span><div class="tl-card glass has-media"><figure class="tl-media"><img src="img/fablab-trainer.jpg" alt="Teaching students to run the CNC milling machine at the FabLab" loading="lazy"></figure><div class="tl-body"><h3>Senior Maker · FabLab ENISo</h3><p class="meta">Sousse, Tunisia</p>
+<ul class="pts"><li>Mentor and supervise robotics and mechatronics projects, from concept and design through prototyping, integration and testing.</li><li>Deliver technical trainings and hands-on workshops in robotics, electronics and digital fabrication.</li></ul></div></div></div>
+<div class="tl-item" data-reveal><span class="yr">2025</span><div class="tl-card glass has-media"><figure class="tl-media"><img src="img/slam-prototype.jpg" alt="The SLAM robot prototype built during the internship" loading="lazy"></figure><div class="tl-body"><h3>Intern · Rosenberger</h3><p class="meta">Sousse, Tunisia</p>
 <a class="btn btn-ghost sm doc" href="reports/stage-rosenberger-herch-2025.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Read the internship report<span class="tag">PDF · FR</span></a>
-<ul class="pts"><li>Developed autonomous navigation and mapping simulations with ROS and SLAM.</li><li>Designed and built a robot prototype with a Raspberry Pi, a LiDAR and DC motors with encoders.</li></ul></div></div>
-<div class="tl-item" data-reveal><span class="yr">2024</span><div class="tl-card glass"><h3>Intern · LEONI</h3><p class="meta">Sousse, Tunisia</p>
-<ul class="pts"><li>Followed every stage of wiring harness production, and studied assembly processes and quality control procedures.</li></ul></div></div>
+<ul class="pts"><li>Developed autonomous navigation and mapping simulations with ROS and SLAM.</li><li>Designed and built a robot prototype with a Raspberry Pi, a LiDAR and DC motors with encoders.</li></ul></div></div></div>
+<div class="tl-item" data-reveal><span class="yr">2024</span><div class="tl-card glass has-media"><figure class="tl-media"><img src="img/leoni-harness.jpg" alt="An automotive wiring harness with its connectors" loading="lazy"><small>Illustration: automotive wiring harness · Photo <a href="https://commons.wikimedia.org/wiki/File:Wire_harness_for_aftermarket_head_unit.jpeg" target="_blank" rel="noopener">Zuzu</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a></small></figure><div class="tl-body"><h3>Intern · LEONI</h3><p class="meta">Sousse, Tunisia</p>
+<ul class="pts"><li>Followed every stage of wiring harness production, and studied assembly processes and quality control procedures.</li></ul></div></div></div>
 </div>
 </div>
 </section>
