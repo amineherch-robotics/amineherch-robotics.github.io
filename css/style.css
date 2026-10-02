@@ -241,6 +241,10 @@ h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1
 .gal .wide img{height:420px}
 .gal figure:hover img{transform:scale(1.04)}
 .gal figcaption{padding:14px 18px 16px;color:var(--soft);font-size:14.5px;border-top:1px solid var(--line)}
+.fig-link{display:block;color:inherit;text-decoration:none}
+.fig-link:focus-visible{outline-offset:-3px}
+.gal .fb{display:flex;width:fit-content;margin-top:8px;font:500 12px var(--mono);letter-spacing:.06em;color:var(--cyan);opacity:.75;transition:opacity .25s}
+.fig-link:hover .fb{opacity:1}
 .gal figcaption b{display:block;font:600 16px var(--display);color:var(--ink);margin-bottom:2px}
 
 /* training */
