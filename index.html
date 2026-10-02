@@ -113,6 +113,15 @@
 <figure class="feat-shot"><a href="img/pfe-unity-interface.jpg" target="_blank" rel="noopener"><img src="img/pfe-unity-interface.jpg" alt="Unity digital twin interface: robot status cards for Omron LD-90, MiR600 and MiR250, mission panel, 3D view of the CNIMI lab and mission queue" loading="lazy" width="1600" height="900"></a><figcaption>The Unity supervision interface: live status of the three robots, missions in Simple or Fleet mode, and the 3D lab.</figcaption></figure>
 </div>
 
+<div class="fleet">
+<p class="lbl">THE REAL FLEET · CNIMI LAB</p>
+<div class="fleet-grid">
+<figure class="bot-card"><a href="img/robot-mir250.jpg" target="_blank" rel="noopener"><img src="img/robot-mir250.jpg" alt="The real MiR250 at the CNIMI lab" loading="lazy" style="object-position:50% 100%"></a><figcaption><b>MiR250</b><span class="bot-role">Mobile manipulation platform</span><span class="bot-specs">250 kg · 2 m/s · REST API</span></figcaption></figure>
+<figure class="bot-card"><a href="img/robot-mir600.jpg" target="_blank" rel="noopener"><img src="img/robot-mir600.jpg" alt="The real MiR600 at the CNIMI lab" loading="lazy" style="object-position:50% 50%"></a><figcaption><b>MiR600</b><span class="bot-role">Heavy-load AMR with pallet lift</span><span class="bot-specs">600 kg · 2 m/s · REST API</span></figcaption></figure>
+<figure class="bot-card"><a href="img/robot-omron-ld90.jpg" target="_blank" rel="noopener"><img src="img/robot-omron-ld90.jpg" alt="The real Omron LD-90 at the CNIMI lab" loading="lazy" style="object-position:50% 85%"></a><figcaption><b>Omron LD-90</b><span class="bot-role">Light-load AMR, proprietary interface</span><span class="bot-specs">90 kg · 1.35 m/s · ARCL over TCP</span></figcaption></figure>
+</div>
+</div>
+
 <div class="pillars">
 <div class="pillar"><span class="pl-n">01</span><h4>Integrate</h4><p class="pl-sub">One ROS 2 interface for every robot</p>
 <ul class="pts"><li><b>MiR driver:</b> rosbridge WebSocket for real-time state and motion, REST API for missions.</li><li><b>Omron driver:</b> TCP client, ARCL parser and ROS 2 node in three layers, with automatic reconnection.</li><li><b>Common frame:</b> each robot calibrated against the shared RMF map with its own offset.</li><li>MiR software stack migrated from ROS 1 to ROS 2 Jazzy.</li></ul></div>

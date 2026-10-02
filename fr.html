@@ -114,6 +114,15 @@
 <figure class="feat-shot"><a href="img/pfe-unity-interface.jpg" target="_blank" rel="noopener"><img src="img/pfe-unity-interface.jpg" alt="Interface du jumeau numérique Unity : état des robots Omron LD-90, MiR600 et MiR250, panneau de missions, vue 3D du laboratoire CNIMI et file de missions" loading="lazy" width="1600" height="900"></a><figcaption>L'interface de supervision Unity : état en direct des trois robots, missions en mode Simple ou Flotte, et le laboratoire en 3D.</figcaption></figure>
 </div>
 
+<div class="fleet">
+<p class="lbl">LA FLOTTE RÉELLE · LABO CNIMI</p>
+<div class="fleet-grid">
+<figure class="bot-card"><a href="img/robot-mir250.jpg" target="_blank" rel="noopener"><img src="img/robot-mir250.jpg" alt="Le MiR250 réel au laboratoire CNIMI" loading="lazy" style="object-position:50% 100%"></a><figcaption><b>MiR250</b><span class="bot-role">Plateforme de manipulation mobile</span><span class="bot-specs">250 kg · 2 m/s · API REST</span></figcaption></figure>
+<figure class="bot-card"><a href="img/robot-mir600.jpg" target="_blank" rel="noopener"><img src="img/robot-mir600.jpg" alt="Le MiR600 réel au laboratoire CNIMI" loading="lazy" style="object-position:50% 50%"></a><figcaption><b>MiR600</b><span class="bot-role">AMR charges lourdes avec levage de palettes</span><span class="bot-specs">600 kg · 2 m/s · API REST</span></figcaption></figure>
+<figure class="bot-card"><a href="img/robot-omron-ld90.jpg" target="_blank" rel="noopener"><img src="img/robot-omron-ld90.jpg" alt="L'Omron LD-90 réel au laboratoire CNIMI" loading="lazy" style="object-position:50% 85%"></a><figcaption><b>Omron LD-90</b><span class="bot-role">AMR charges légères, interface propriétaire</span><span class="bot-specs">90 kg · 1,35 m/s · ARCL sur TCP</span></figcaption></figure>
+</div>
+</div>
+
 <div class="pillars">
 <div class="pillar"><span class="pl-n">01</span><h4>Intégrer</h4><p class="pl-sub">Une interface ROS 2 pour chaque robot</p>
 <ul class="pts"><li><b>Driver MiR :</b> WebSocket rosbridge pour l'état et le mouvement en temps réel, API REST pour les missions.</li><li><b>Driver Omron :</b> client TCP, parseur ARCL et nœud ROS 2 en trois couches, avec reconnexion automatique.</li><li><b>Repère commun :</b> chaque robot calibré sur la carte RMF partagée avec son propre décalage.</li><li>Pile logicielle MiR migrée de ROS 1 vers ROS 2 Jazzy.</li></ul></div>
