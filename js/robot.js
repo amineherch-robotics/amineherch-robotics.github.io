@@ -162,47 +162,10 @@
   robot.traverse(function (o) { if (o.isMesh) o.castShadow = !small; });
   scene.add(robot);
 
-  // ---------- navigation graph: the robot drives a mission loop like an AMR ----------
-  var ROBOT_SCALE = 0.48;
-  robot.scale.setScalar(ROBOT_SCALE);
-  var WAYPOINTS = [[-2.15, -0.55], [-1.2, -1.75], [0.55, -1.95], [2.05, -1.05], [2.25, 0.55], [1.15, 1.75], [-0.55, 1.95], [-1.95, 1.0]];
-  var STOPS = { 0: 1.4, 4: 1.4 };            // waypoint index -> dwell time (s): pick-up / drop-off
-  var route = new THREE.CatmullRomCurve3(WAYPOINTS.map(function (w) { return new THREE.Vector3(w[0], 0.012, w[1]); }), true, 'centripetal', 0.5);
-  var routeLen = route.getLength();
-  var SEG = 400, routePts = route.getSpacedPoints(SEG);
-  // lane for the whole loop (a thin glowing tube reads better than 1px lines)
-  var lane = new THREE.Mesh(new THREE.TubeGeometry(route, 320, 0.014, 6, true),
-    new THREE.MeshBasicMaterial({ color: VIOLET, transparent: true, opacity: .75, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }));
-  scene.add(lane);
-  // planned path from the robot to its next goal: a trail of bright dots
-  var PLAN_N = 36, planDots = new THREE.InstancedMesh(new THREE.SphereGeometry(0.045, 12, 8),
-    new THREE.MeshBasicMaterial({ color: CYAN, toneMapped: false }), PLAN_N);
-  planDots.instanceMatrix.setUsage(THREE.DynamicDrawUsage); scene.add(planDots);
-  var dm = new THREE.Matrix4(), dq = new THREE.Quaternion(), dv = new THREE.Vector3(), ds = new THREE.Vector3();
-  // arc-length position of each waypoint on the loop
-  var wpU = WAYPOINTS.map(function (w) {
-    var best = 0, bd = 1e9;
-    for (var k = 0; k <= SEG; k++) { var q = routePts[k], d = (q.x - w[0]) * (q.x - w[0]) + (q.z - w[1]) * (q.z - w[1]); if (d < bd) { bd = d; best = k / SEG; } }
-    return best;
-  });
-  // waypoint markers
-  var markers = WAYPOINTS.map(function (w, i) {
-    var g = new THREE.Group(); g.position.set(w[0], 0.01, w[1]);
-    var ringMat = new THREE.MeshBasicMaterial({ color: VIOLET, transparent: true, opacity: .8, side: THREE.DoubleSide, toneMapped: false });
-    var ring = new THREE.Mesh(new THREE.RingGeometry(0.11, 0.135, 40), ringMat); ring.rotation.x = -Math.PI / 2; g.add(ring);
-    var dotMat = new THREE.MeshBasicMaterial({ color: STOPS[i] ? 0xF0BC2E : VIOLET, toneMapped: false });
-    var dot = new THREE.Mesh(new THREE.CircleGeometry(STOPS[i] ? 0.06 : 0.04, 24), dotMat); dot.rotation.x = -Math.PI / 2; dot.position.y = 0.002; g.add(dot);
-    var halo = new THREE.Mesh(new THREE.RingGeometry(0.14, 0.2, 40), new THREE.MeshBasicMaterial({ color: CYAN, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide, toneMapped: false }));
-    halo.rotation.x = -Math.PI / 2; g.add(halo);
-    scene.add(g);
-    return { ring: ringMat, halo: halo };
-  });
-  var nav = { u: wpU[7] + 0.01, next: 0, wait: 0, dist: 0, heading: null };
-
   // ---------- platform and environment ----------
   var disc = new THREE.Mesh(new THREE.CylinderGeometry(3.4, 3.5, 0.14, 96), new THREE.MeshStandardMaterial({ color: 0x0d0b1c, metalness: .7, roughness: .38 }));
   disc.position.y = -0.07; disc.receiveShadow = true; scene.add(disc);
-  var etch = new THREE.Mesh(new THREE.CircleGeometry(3.38, 96), new THREE.MeshBasicMaterial({ map: circuitTex, transparent: true, opacity: .45, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }));
+  var etch = new THREE.Mesh(new THREE.CircleGeometry(3.38, 96), new THREE.MeshBasicMaterial({ map: circuitTex, transparent: true, opacity: .9, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }));
   etch.rotation.x = -Math.PI / 2; etch.position.y = 0.002; scene.add(etch);
   var rim = new THREE.Mesh(new THREE.TorusGeometry(3.45, 0.018, 8, 160), glowV); rim.rotation.x = Math.PI / 2; scene.add(rim);
   var rim2 = new THREE.Mesh(new THREE.TorusGeometry(3.9, 0.006, 6, 160), new THREE.MeshBasicMaterial({ color: CYAN, transparent: true, opacity: .5, toneMapped: false }));
@@ -238,7 +201,7 @@
   var huds = LABELS.map(function (txt, i) {
     var a = new THREE.Object3D();
     var ang = i / LABELS.length * Math.PI * 2;
-    var rr = small ? 2.7 : 3.2; a.position.set(Math.cos(ang) * rr, 0.95 + (i % 3) * 0.3, Math.sin(ang) * rr);
+    var rr = small ? 2.3 : 2.95; a.position.set(Math.cos(ang) * rr, 1.05 + (i % 3) * 0.42, Math.sin(ang) * rr);
     a.userData.y0 = a.position.y; anchors.add(a);
     var el = document.createElement('div'); el.className = 'hud';
     el.innerHTML = '<span class="hud-dot"></span><span class="hud-txt"><i>0' + (i + 1) + '</i>' + txt + '</span>';
@@ -249,8 +212,8 @@
   // ---------- camera framing, mouse and scroll ----------
   var W = 1, H = 1, fit = 1;
   var mouse = { x: 0, y: 0, tx: 0, ty: 0 }, scrollP = 0, visible = true;
-  var camFrom = new THREE.Vector3(0, 4.4, 7.4), camTo = new THREE.Vector3(0, 6.2, 5.2);
-  var lookFrom = new THREE.Vector3(0, -0.15, 0.55), lookTo = new THREE.Vector3(0, -0.3, 0.4);
+  var camFrom = new THREE.Vector3(0, 2.3, 7.4), camTo = new THREE.Vector3(0, 3.9, 5.9);
+  var lookFrom = new THREE.Vector3(0, 0.82, 0), lookTo = new THREE.Vector3(0, 0.5, 0);
   var camPos = new THREE.Vector3(), look = new THREE.Vector3(), tmp = new THREE.Vector3();
 
   function resize() {
@@ -282,13 +245,15 @@
     var s = scrollP * scrollP * (3 - 2 * scrollP);
     mouse.x += (mouse.tx - mouse.x) * .05; mouse.y += (mouse.ty - mouse.y) * .05;
 
-    drive(dt);
+    robot.rotation.y = -0.5 + t * 0.22 + s * 1.4;
+    robot.position.y = 0.07 + Math.sin(t * 1.3) * 0.045;
+    wheels.forEach(function (w) { w.rotation.z = -t * 2.2; });
     head.rotation.y = t * 3.2;
     beacon.material.color.setHex(Math.sin(t * 4) > 0 ? VIOLET : 0x3b2a75);
 
-    var pp = (t * 0.6) % 1;
-    pulse.position.x = robot.position.x; pulse.position.z = robot.position.z;
-    pulse.scale.setScalar(0.25 + pp * 0.9); pulseMat.opacity = .5 * (1 - pp);
+    var pp = (t * 0.45) % 1;
+    pulse.scale.setScalar(1 + pp * 2.35); pulseMat.opacity = .55 * (1 - pp);
+    etch.rotation.z = t * 0.03;
     anchors.rotation.y = -t * 0.12;
 
     var p = pGeo.attributes.position.array;
@@ -304,48 +269,6 @@
     renderer.render(scene, camera);
     placeHuds(s);
   }
-  // follow the loop at constant speed, slow into each waypoint, dwell at stops
-  var SPEED = 0.62, P = new THREE.Vector3(), T = new THREE.Vector3();
-  function ahead(from, to) { var d = to - from; return d < 0 ? d + 1 : d; }
-  function drive(dt) {
-    var goalU = wpU[nav.next], remaining = ahead(nav.u, goalU) * routeLen;
-    if (nav.wait > 0) {
-      nav.wait -= dt;
-      if (nav.wait <= 0) nav.next = (nav.next + 1) % WAYPOINTS.length;
-    } else {
-      var v = SPEED * (STOPS[nav.next] ? Math.min(1, 0.25 + remaining / 0.6) : 1);
-      var step = Math.min(v * dt, remaining);
-      nav.u = (nav.u + step / routeLen) % 1; nav.dist += step;
-      if (remaining - step < 1e-4) {
-        if (STOPS[nav.next]) nav.wait = STOPS[nav.next];
-        else nav.next = (nav.next + 1) % WAYPOINTS.length;
-      }
-    }
-    route.getPointAt(nav.u, P); route.getTangentAt(nav.u, T);
-    robot.position.set(P.x, 0.0, P.z);
-    var target = Math.atan2(-T.z, T.x);
-    if (nav.heading === null) nav.heading = target;
-    var dh = Math.atan2(Math.sin(target - nav.heading), Math.cos(target - nav.heading));
-    nav.heading += dh * Math.min(1, dt * 8);
-    robot.rotation.y = nav.heading;
-    var spin = -nav.dist / (0.26 * ROBOT_SCALE);
-    wheels.forEach(function (w) { w.rotation.z = spin; });
-    // planned path: dots from the robot to its current goal
-    var span = nav.wait > 0 ? 0 : ahead(nav.u, wpU[nav.next]);
-    for (var k = 0; k < PLAN_N; k++) {
-      var f = (k + 1) / PLAN_N, on = span > 0 && f * span * routeLen > 0.32 * ROBOT_SCALE / 0.48;
-      route.getPointAt((nav.u + f * span) % 1, dv); dv.y = 0.03;
-      ds.setScalar(on ? 1 - 0.5 * f : 0);
-      planDots.setMatrixAt(k, dm.compose(dv, dq, ds));
-    }
-    planDots.instanceMatrix.needsUpdate = true;
-    markers.forEach(function (m, i) {
-      var active = i === nav.next;
-      m.ring.color.setHex(active ? CYAN : VIOLET);
-      m.halo.material.opacity = active ? 0.35 + 0.35 * Math.sin(t * 6) : 0;
-    });
-  }
-
   function placeHuds(s) {
     huds.forEach(function (h, i) {
       h.a.position.y = h.a.userData.y0 + Math.sin(t * 0.9 + i) * 0.08;
@@ -355,7 +278,7 @@
       var x = (tmp.x * .5 + .5) * W, y = (-tmp.y * .5 + .5) * H;
       if (!h.w) h.w = h.el.offsetWidth;
       x = Math.min(Math.max(x, 8), W - h.w - 8);
-      var o = (0.12 + 0.88 * Math.pow(Math.max(depth + 3.2, 0) / 6.4, 1.4)) * (1 - s * 1.4);
+      var o = (0.25 + 0.75 * (depth + 2.95) / 5.9) * (1 - s * 1.4);
       h.el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) translate(-6px,-50%)';
       h.el.style.opacity = Math.max(o, 0).toFixed(3);
       h.el.style.zIndex = depth > 0 ? 2 : 0;
