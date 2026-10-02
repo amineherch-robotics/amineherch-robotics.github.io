@@ -195,7 +195,7 @@ h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1
 .pillar .pts li{font-size:14.5px;line-height:1.55}
 .pillar .pts b{color:var(--ink);font-weight:600}
 .results{margin-top:16px;padding:22px;border-radius:12px;border:1px solid rgba(34,211,238,.25);background:linear-gradient(120deg,rgba(34,211,238,.06),rgba(139,92,246,.06))}
-.res-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:18px}
+.res-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .res b{display:block;font:700 30px/1.1 var(--display);letter-spacing:-.02em;background:linear-gradient(100deg,#fff,var(--violet2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .res span{font-size:13.5px;color:var(--soft);line-height:1.4;display:block;margin-top:4px}
 .insight{border-top:1px dashed rgba(167,139,250,.3);padding-top:16px}
