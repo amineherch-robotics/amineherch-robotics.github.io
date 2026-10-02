@@ -259,8 +259,10 @@ h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1
 .figs{margin-top:16px}
 .fig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .fig-grid figure{margin:0}
-.fig-grid img{width:100%;height:260px;object-fit:cover;object-position:top;transition:transform .6s}
+.fig-grid img{width:100%;height:290px;object-fit:cover;object-position:top;transition:transform .6s}
 .fig-grid .paper a{background:#fff}
+.fig-grid .robots a{background:#1c1c22}
+.fig-grid .robots img{object-fit:contain;object-position:center}
 .fig-grid .paper img{object-fit:contain;padding:10px;background:#fff}
 .fig-grid figcaption{font-size:13.5px;color:var(--soft);margin-top:10px;line-height:1.45}
 .fig-grid figcaption b{display:block;color:var(--ink);font:600 14.5px var(--display);margin-bottom:2px}
