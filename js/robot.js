@@ -194,7 +194,9 @@
   scene.add(particles);
 
   // ---------- floating HUD labels (HTML, projected from 3D anchors) ----------
-  var LABELS = ['ROS 2', 'SLAM', 'Open-RMF', 'Sensor fusion', 'Autonomous navigation', 'Embedded systems', 'Digital twin'];
+  var LABELS = document.documentElement.lang === 'fr'
+    ? ['ROS 2', 'SLAM', 'Open-RMF', 'Fusion de capteurs', 'Navigation autonome', 'Systèmes embarqués', 'Jumeau numérique']
+    : ['ROS 2', 'SLAM', 'Open-RMF', 'Sensor fusion', 'Autonomous navigation', 'Embedded systems', 'Digital twin'];
   var anchors = new THREE.Group(); scene.add(anchors);
   var huds = LABELS.map(function (txt, i) {
     var a = new THREE.Object3D();

@@ -74,6 +74,10 @@ h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1
 .nav-links a:hover,.nav-links a.active{color:var(--ink);background:rgba(139,92,246,.14)}
 .nav-gh{display:grid !important;place-items:center;width:38px;height:38px;padding:0 !important;margin-left:4px;border:1px solid var(--line2)}
 .nav-gh svg{width:18px;height:18px;fill:currentColor}
+.nav-links{order:2;margin-left:auto}
+.lang{order:3;display:inline-flex;align-items:center;margin-left:-6px;padding:3px;border:1px solid var(--line2);border-radius:999px;font:500 12px var(--mono)}
+.lang a{text-decoration:none;border-radius:999px;padding:5px 10px;font:500 12px var(--mono);letter-spacing:.06em;color:var(--soft)}
+.lang a.on{color:#06060E;background:linear-gradient(100deg,var(--violet2),var(--cyan))}
 .menu-btn{display:none;width:42px;height:42px;border-radius:999px;border:1px solid var(--line2);background:transparent;cursor:pointer;position:relative}
 .menu-btn span{position:absolute;left:12px;right:12px;height:1.5px;background:var(--ink);transition:transform .3s,top .3s}
 .menu-btn span:first-child{top:16px}.menu-btn span:last-child{top:24px}
@@ -384,6 +388,9 @@ h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1
   .nav-links{display:none;width:100%;flex-direction:column;align-items:stretch;padding:6px 0 4px}
   .nav-links.open{display:flex}
   .nav-links a{padding:12px 14px;font-size:16px}
+  .lang{order:1;margin-left:auto}
+  .menu-btn{order:2}
+  .nav-links{order:3}
   .nav-gh{width:auto !important;height:auto !important;display:flex !important;justify-content:flex-start;padding:12px 14px !important;margin:0}
   .floaters{display:none}
 }

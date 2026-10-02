@@ -5,6 +5,11 @@
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // keep the current section when switching language
+  document.querySelectorAll('.lang a').forEach(function (a) {
+    a.addEventListener('click', function () { if (location.hash) a.href = a.getAttribute('href').split('#')[0] + location.hash; });
+  });
+
   // ---- mobile menu ----
   var btn = document.querySelector('.menu-btn');
   var links = document.getElementById('nav-links');
