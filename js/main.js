@@ -94,9 +94,4 @@
     scrollTrigger: { trigger: '.tl', start: 'top 70%', end: 'bottom 60%', scrub: true }
   });
 
-  // hero copy drifts up and fades as the 3D scene takes over
-  g.fromTo('.hero-copy', { y: 0, opacity: 1 }, {
-    y: -80, opacity: 0, ease: 'none', immediateRender: false,
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: '60% top', scrub: true }
-  });
 })();
