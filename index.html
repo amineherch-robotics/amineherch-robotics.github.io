@@ -103,20 +103,15 @@
 <h2 data-reveal>Selected <span class="grad">engineering projects</span></h2>
 
 <article class="feat glass" data-reveal>
+<div class="feat-top">
 <div class="feat-txt">
 <span class="pnum">01 · FEATURED · FINAL-YEAR PROJECT</span>
 <h3>Heterogeneous AMR fleet management with a Unity digital twin</h3>
 <p class="meta">CNIMI Laboratory, UQTR · Drummondville, Québec, Canada · 2026</p>
-<p>One system that coordinates three robot models from different manufacturers through a single task interface, with a live 3D twin to supervise and test missions.</p>
-<ul class="pts">
-<li>Wrote one driver per robot brand: MiR over rosbridge WebSocket and REST, Omron over its ARCL protocol.</li>
-<li>Integrated MiR250, MiR600 and Omron LD-90 into Open-RMF: maps, navigation routes, traffic rules and fleet coordination.</li>
-<li>Built a custom task client for goto, patrol, loop, delivery and charge missions.</li>
-<li>Developed a Unity digital twin for real-time 3D visualisation, robot state monitoring and fleet supervision through ROS-TCP-Connector.</li>
-<li>Migrated the MiR software stack from ROS 1 to ROS 2 Jazzy, and chose Unity after comparing Gazebo, Isaac Sim, Unity and Unreal Engine.</li>
-</ul>
-<ul class="chips"><li>ROS 2 Jazzy</li><li>Open-RMF</li><li>Nav2</li><li>Unity</li><li>ROS-TCP-Connector</li><li>ARCL</li><li>Python</li><li>C++</li><li>Linux</li></ul>
-<a class="btn btn-ghost sm" href="https://github.com/Mohamed-Amine-Herch/mir250-600"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.5-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>Source code on GitHub</a>
+<p class="feat-lead">Three autonomous mobile robots from two manufacturers, each with its own navigation stack, protocol and map frame, made to work as <b>one fleet</b>: a common ROS 2 integration layer, Open-RMF orchestration and a live Unity digital twin, validated on the real robots.</p>
+<div class="challenge"><span class="lbl">THE CHALLENGE</span><p>The MiR robots speak REST and WebSocket, the Omron LD-90 speaks ARCL over TCP, and each robot localises in its own map. Left alone they work in silos: no shared frame, no mission allocation, no traffic coordination.</p></div>
+<ul class="chips"><li>ROS 2 Jazzy</li><li>Open-RMF</li><li>Unity</li><li>ROS-TCP-Connector</li><li>REST / WebSocket</li><li>ARCL</li><li>Python</li><li>C++</li><li>Linux</li></ul>
+<a class="btn btn-primary sm" href="reports/pfe-cnimi-herch-2026.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span>Read the full report</span><span class="tag">PDF · FR</span></a>
 </div>
 
 <div class="arch" role="img" aria-label="System architecture: the task client sends missions to the Open-RMF core, which drives a fleet adapter. The adapter talks to one driver per robot brand, and a Unity digital twin is connected to ROS 2.">
@@ -130,6 +125,27 @@
 <div class="row"><div class="node">MiR driver<small>rosbridge + REST</small></div><div class="node">Omron driver<small>ARCL</small></div></div>
 <div class="flow"><i></i><em>onboard navigation</em></div>
 <div class="row"><div class="node bot">MiR250 · MiR600</div><div class="node bot">Omron LD-90</div></div>
+</div>
+</div>
+
+<div class="pillars">
+<div class="pillar"><span class="pl-n">01</span><h4>Integrate</h4><p class="pl-sub">One ROS 2 interface for every robot</p>
+<ul class="pts"><li><b>MiR driver:</b> rosbridge WebSocket for real-time state and motion, REST API for missions.</li><li><b>Omron driver:</b> TCP client, ARCL parser and ROS 2 node in three layers, with automatic reconnection.</li><li><b>Common frame:</b> each robot calibrated against the shared RMF map with its own offset.</li><li>MiR software stack migrated from ROS 1 to ROS 2 Jazzy.</li></ul></div>
+<div class="pillar"><span class="pl-n">02</span><h4>Orchestrate</h4><p class="pl-sub">Open-RMF on top, robots unchanged</p>
+<ul class="pts"><li><b>Two fleets</b> (MiR and Omron) bid for each task; the dispatcher picks the earliest finish time.</li><li><b>Navigation graph</b> drawn on the lab map: lanes, waypoints and charging stations.</li><li><b>Custom fleet adapter</b> and mission client for goto, patrol, loop, delivery and charge.</li><li><b>Battery monitor</b> sends a robot to charge at 20&nbsp;% and frees it again at 40&nbsp;%.</li></ul></div>
+<div class="pillar"><span class="pl-n">03</span><h4>Supervise</h4><p class="pl-sub">A live Unity twin of the CNIMI lab</p>
+<ul class="pts"><li><b>Virtual lab</b> rebuilt on the robots' own map, with URDF models of the three robots.</li><li><b>Simple mode:</b> go to, dock, stop, jog and calibrate each robot directly.</li><li><b>Fleet mode:</b> missions sent through Open-RMF, whole fleet shown live.</li><li>Every mission logged with duration and battery use; Unity chosen after comparing Gazebo, Isaac Sim and Unreal.</li></ul></div>
+</div>
+
+<div class="results">
+<p class="lbl">RESULTS ON THE REAL FLEET</p>
+<div class="res-grid">
+<div class="res"><b>3 / 3</b><span>robots driven and supervised from one interface</span></div>
+<div class="res"><b>6</b><span>test destinations auto-allocated by Open-RMF</span></div>
+<div class="res"><b>≈ 4 s</b><span>average gap between fleet mode and direct command</span></div>
+<div class="res"><b>0</b><span>collisions or deadlocks in the intersection-conflict test</span></div>
+</div>
+<div class="insight"><span class="lbl">KEY FINDING · DESTINATION L50</span><p>The MiR250 was closer in a straight line (16.3&nbsp;m vs 19.7&nbsp;m), yet Open-RMF assigned the Omron LD-90. Allocation follows the real path on the navigation graph, not straight-line distance.</p></div>
 </div>
 </article>
 
