@@ -286,6 +286,9 @@ h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1
 .proj-media span{position:absolute;left:8px;bottom:8px;font:500 11px var(--mono);letter-spacing:.06em;padding:3px 8px;border-radius:5px;background:rgba(6,6,14,.75);color:var(--ink);border:1px solid var(--line2)}
 .proj.wide>p{max-width:62em;color:#CFCFDD}
 .proj .btn.doc{margin-top:16px}
+.proj-media.two{grid-template-columns:1.55fr 1fr}
+.proj-media video{display:block;width:100%;height:230px;object-fit:cover;background:#06060e;transition:transform .6s}
+.proj-media a:hover video{transform:scale(1.03)}
 
 /* experience thumbnails */
 .tl-card.has-media{display:grid;grid-template-columns:1fr 200px;gap:22px;align-items:start}
@@ -436,6 +439,7 @@ h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1
   .stat b{margin:0}
   .pgrid,.gal,.tr,.sk,.fig-grid,.fleet-grid{grid-template-columns:1fr}
   .proj-media{grid-template-columns:1fr 1fr}.proj-media a:first-child{grid-row:span 2}.proj-media img{height:150px}.proj-media a:first-child img{height:312px}
+  .proj-media.two{grid-template-columns:1fr}.proj-media.two a:first-child{grid-row:auto}.proj-media.two video,.proj-media.two img{height:200px}
   .tl-card.has-media{grid-template-columns:1fr}.tl-media{grid-column:1;grid-row:auto}.tl-media img{height:170px}
   .gal img,.gal .wide img{height:230px}
   .feat{padding:22px}

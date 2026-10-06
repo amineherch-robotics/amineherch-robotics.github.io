@@ -5,6 +5,9 @@
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // demo videos: no autoplay when the visitor asked for reduced motion
+  if (reduce) document.querySelectorAll('video[autoplay]').forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
+
   // keep the current section when switching language
   document.querySelectorAll('.lang a').forEach(function (a) {
     a.addEventListener('click', function () { if (location.hash) a.href = a.getAttribute('href').split('#')[0] + location.hash; });

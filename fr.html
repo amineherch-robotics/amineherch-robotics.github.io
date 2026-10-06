@@ -154,12 +154,24 @@
 
 <div class="pgrid">
 <article class="proj glass wide" data-reveal>
+<div class="proj-media two">
+<a href="img/person-tracking-demo.mp4" target="_blank" rel="noopener"><video src="img/person-tracking-demo.mp4" poster="img/person-tracking-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Simulation Gazebo : trois personnes marchent dans une pièce, le TurtleBot3 suit la personne choisie par l'utilisateur et tourne pour la retrouver quand elle sort du champ de la caméra"></video><span>Démo Gazebo · vitesse ×4</span></a>
+<a href="img/person-tracking-chooser.jpg" target="_blank" rel="noopener"><img src="img/person-tracking-chooser.jpg" alt="Fenêtre de choix de la cible : l'image de la caméra du robot, chaque personne détectée encadrée avec son ID et la couleur de ses vêtements ; l'ID 1 est la cible, à 7,14 m" loading="lazy" width="830" height="564"><span>Cliquer sur la personne à suivre</span></a>
+</div>
+<span class="pnum">02 · PROJET PERSONNEL · 2026 · EN COURS</span>
+<h3>Robot suiveur de personne&nbsp;: YOLO, suivi multi-objets et asservissement visuel</h3>
+<p>Un TurtleBot3 Burger repère les personnes avec sa caméra, laisse l'utilisateur cliquer sur celle à suivre, et reste à environ 1 m derrière elle. YOLO26n détecte les personnes et ByteTrack les suit d'une image à l'autre. Une couche d'identité que j'ai écrite lit la couleur des vêtements de chacun : une personne cachée un moment retrouve le même ID quand elle réapparaît. Le LiDAR donne la distance, un contrôleur P pilote le robot, et un watchdog, des limites de vitesse et un arrêt d'urgence assurent la sécurité. Si la cible est perdue plus de 2 s, le robot tourne sur place pour la retrouver. Le projet est développé et testé dans Gazebo avec trois personnes qui marchent. Le test sur le vrai robot est la prochaine étape.</p>
+<ul class="chips"><li>ROS 2 Jazzy</li><li>Gazebo Harmonic</li><li>YOLO26n</li><li>ByteTrack</li><li>OpenCV</li><li>Python</li><li>Fusion caméra–LiDAR</li><li>Asservissement visuel</li><li>pytest</li></ul>
+<a class="btn btn-ghost sm doc" href="https://github.com/amineherch-robotics/person_tracking" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>Voir le code<span class="tag">GitHub</span></a>
+</article>
+
+<article class="proj glass wide" data-reveal>
 <div class="proj-media">
 <a href="img/slam-prototype.jpg" target="_blank" rel="noopener"><img src="img/slam-prototype.jpg" alt="Le prototype physique : RPLIDAR sur un châssis en acrylique découpé au laser, avec moteurs à courant continu, Raspberry Pi et ESP32" loading="lazy" width="569" height="760"><span>Prototype physique</span></a>
 <a href="img/slam-gazebo.jpg" target="_blank" rel="noopener"><img src="img/slam-gazebo.jpg" alt="Simulation Gazebo du robot balayant la scène de l'usine avec son LiDAR" loading="lazy" width="1200" height="680"><span>Simulation Gazebo</span></a>
 <a href="img/slam-map.jpg" target="_blank" rel="noopener"><img src="img/slam-map.jpg" alt="Carte d'occupation de l'usine simulée construite par SLAM, affichée dans RViz" loading="lazy" width="1200" height="805"><span>Carte SLAM dans RViz</span></a>
 </div>
-<span class="pnum">02 · STAGE · ROSENBERGER · 2025</span>
+<span class="pnum">03 · STAGE · ROSENBERGER · 2025</span>
 <h3>Prototype de navigation autonome et SLAM</h3>
 <p>Un robot mobile pour transporter des caisses du stock vers les postes de travail. Je l'ai modélisé en URDF, simulé dans une scène Gazebo de l'usine, j'ai construit la carte par SLAM et testé la navigation autonome dans RViz. J'ai ensuite réalisé le prototype physique : pièces SolidWorks, supports de capteurs imprimés en 3D, châssis découpé au laser, Raspberry Pi 4 avec RPLIDAR et caméra, et deux moteurs à courant continu avec encodeurs pilotés par un ESP32 via des ponts en H BTS7960.</p>
 <ul class="chips"><li>ROS 2</li><li>Gazebo</li><li>RViz</li><li>SLAM</li><li>LiDAR</li><li>Raspberry Pi</li><li>ESP32</li><li>SolidWorks</li><li>Impression 3D</li><li>Découpe laser</li></ul>
@@ -168,7 +180,7 @@
 
 <article class="proj glass" data-reveal>
 <div class="pvis" aria-hidden="true"><svg viewBox="0 0 120 70" class="v-rfid"><rect x="18" y="20" width="34" height="24" rx="3"/><path d="M24 28h12M24 34h18"/><g class="waves"><path d="M62 32a6 6 0 0 1 0 8"/><path d="M68 27a13 13 0 0 1 0 18"/><path d="M74 22a20 20 0 0 1 0 28"/></g><rect x="86" y="24" width="18" height="16" rx="2"/><path d="M95 40v8M88 52h14"/></svg></div>
-<span class="pnum">03 · PROJET ACADÉMIQUE</span>
+<span class="pnum">04 · PROJET ACADÉMIQUE</span>
 <h3>SmartTime IoT : système de pointage connecté</h3>
 <p>Pointage des employés par badges RFID lus par un ESP8266. Les données sont publiées en MQTT (HiveMQ) et suivies en temps réel sur un tableau de bord Node-RED.</p>
 <ul class="chips"><li>ESP8266</li><li>RFID</li><li>MQTT</li><li>HiveMQ</li><li>Node-RED</li></ul>
@@ -176,7 +188,7 @@
 
 <article class="proj glass" data-reveal>
 <div class="pvis" aria-hidden="true"><svg viewBox="0 0 120 70" class="v-vision"><rect x="14" y="8" width="54" height="54" rx="4"/><path d="M32 50V30l6-8 4 10 4-12 4 12 3-6v24z"/><g class="grid"><path d="M14 26h54M14 44h54M32 8v54M50 8v54"/></g><path class="bar" d="M80 20h28M80 32h20M80 44h24"/></svg></div>
-<span class="pnum">04 · PROJET ACADÉMIQUE</span>
+<span class="pnum">05 · PROJET ACADÉMIQUE</span>
 <h3>Reconnaissance de la langue des signes</h3>
 <p>Système de reconnaissance de gestes développé sous MATLAB, avec traitement d'images, vision par ordinateur et apprentissage automatique pour classer les gestes de la langue des signes.</p>
 <ul class="chips"><li>MATLAB</li><li>Traitement d'images</li><li>Vision par ordinateur</li><li>Apprentissage automatique</li></ul>
@@ -184,7 +196,7 @@
 
 <article class="proj glass" data-reveal>
 <div class="pvis" aria-hidden="true"><svg viewBox="0 0 120 70" class="v-line"><path id="trk" class="track" d="M8 52 C30 52 30 18 56 18 S86 52 112 30"/><g class="car"><rect x="-6" y="-4" width="12" height="8" rx="2"/><animateMotion dur="5s" repeatCount="indefinite" rotate="auto"><mpath href="#trk"/></animateMotion></g></svg></div>
-<span class="pnum">05 · PROJET ACADÉMIQUE</span>
+<span class="pnum">06 · PROJET ACADÉMIQUE</span>
 <h3>Robot suiveur de ligne</h3>
 <p>Robot autonome qui suit une piste, avec encodeurs Pololu, fusion de capteurs et régulation PID pour un suivi de trajectoire précis.</p>
 <ul class="chips"><li>Encodeurs Pololu</li><li>Fusion de capteurs</li><li>Régulation PID</li><li>Systèmes embarqués</li></ul>

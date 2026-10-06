@@ -153,12 +153,24 @@
 
 <div class="pgrid">
 <article class="proj glass wide" data-reveal>
+<div class="proj-media two">
+<a href="img/person-tracking-demo.mp4" target="_blank" rel="noopener"><video src="img/person-tracking-demo.mp4" poster="img/person-tracking-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Gazebo simulation: three people walk in a room, the TurtleBot3 follows the person chosen by the user and turns to find them when they leave the camera view"></video><span>Gazebo demo · 4× speed</span></a>
+<a href="img/person-tracking-chooser.jpg" target="_blank" rel="noopener"><img src="img/person-tracking-chooser.jpg" alt="Target selection window: the robot camera image with each detected person boxed and labelled with an ID and the colour of their clothes; ID 1 is marked as the target, at 7.14 m" loading="lazy" width="830" height="564"><span>Click the person to follow</span></a>
+</div>
+<span class="pnum">02 · PERSONAL PROJECT · 2026 · IN PROGRESS</span>
+<h3>Person-following robot: YOLO, multi-object tracking and visual servoing</h3>
+<p>A TurtleBot3 Burger that finds people with its camera, lets the user click on the person to follow, and stays about 1 m behind them. YOLO26n detects the people and ByteTrack follows them from one image to the next. An identity layer I wrote reads the colour of each person's clothes, so a person who is hidden for a while gets the same ID back when they reappear. The LiDAR gives the distance, a P controller drives the robot, and a watchdog, speed limits and an emergency stop keep it safe. When the target is lost for more than 2 s, the robot turns on the spot to find it again. It is built and tested in Gazebo with three walking people. Testing on the real robot comes next.</p>
+<ul class="chips"><li>ROS 2 Jazzy</li><li>Gazebo Harmonic</li><li>YOLO26n</li><li>ByteTrack</li><li>OpenCV</li><li>Python</li><li>Camera–LiDAR fusion</li><li>Visual servoing</li><li>pytest</li></ul>
+<a class="btn btn-ghost sm doc" href="https://github.com/amineherch-robotics/person_tracking" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>View the code<span class="tag">GitHub</span></a>
+</article>
+
+<article class="proj glass wide" data-reveal>
 <div class="proj-media">
 <a href="img/slam-prototype.jpg" target="_blank" rel="noopener"><img src="img/slam-prototype.jpg" alt="The physical robot prototype: RPLIDAR on a laser-cut acrylic chassis with DC motors, Raspberry Pi and ESP32" loading="lazy" width="569" height="760"><span>Physical prototype</span></a>
 <a href="img/slam-gazebo.jpg" target="_blank" rel="noopener"><img src="img/slam-gazebo.jpg" alt="Gazebo simulation of the robot scanning the factory scene with its LiDAR" loading="lazy" width="1200" height="680"><span>Gazebo simulation</span></a>
 <a href="img/slam-map.jpg" target="_blank" rel="noopener"><img src="img/slam-map.jpg" alt="Occupancy map of the simulated factory built with SLAM, shown in RViz" loading="lazy" width="1200" height="805"><span>SLAM map in RViz</span></a>
 </div>
-<span class="pnum">02 · INTERNSHIP · ROSENBERGER · 2025</span>
+<span class="pnum">03 · INTERNSHIP · ROSENBERGER · 2025</span>
 <h3>Autonomous navigation and SLAM prototype</h3>
 <p>A mobile robot for moving boxes from storage to workstations. I modelled it in URDF, simulated it in a Gazebo scene of the plant, built the map with SLAM and tested autonomous navigation in RViz. Then I built the physical prototype: SolidWorks parts, 3D-printed sensor mounts, a laser-cut chassis, a Raspberry Pi 4 with RPLIDAR and camera, and two DC motors with encoders driven by an ESP32 through BTS7960 H-bridges.</p>
 <ul class="chips"><li>ROS 2</li><li>Gazebo</li><li>RViz</li><li>SLAM</li><li>LiDAR</li><li>Raspberry Pi</li><li>ESP32</li><li>SolidWorks</li><li>3D printing</li><li>Laser cutting</li></ul>
@@ -167,7 +179,7 @@
 
 <article class="proj glass" data-reveal>
 <div class="pvis" aria-hidden="true"><svg viewBox="0 0 120 70" class="v-rfid"><rect x="18" y="20" width="34" height="24" rx="3"/><path d="M24 28h12M24 34h18"/><g class="waves"><path d="M62 32a6 6 0 0 1 0 8"/><path d="M68 27a13 13 0 0 1 0 18"/><path d="M74 22a20 20 0 0 1 0 28"/></g><rect x="86" y="24" width="18" height="16" rx="2"/><path d="M95 40v8M88 52h14"/></svg></div>
-<span class="pnum">03 · ACADEMIC PROJECT</span>
+<span class="pnum">04 · ACADEMIC PROJECT</span>
 <h3>SmartTime IoT: connected attendance system</h3>
 <p>Employee attendance with RFID badges read by an ESP8266. Data is published over MQTT (HiveMQ) and monitored in real time on a Node-RED dashboard.</p>
 <ul class="chips"><li>ESP8266</li><li>RFID</li><li>MQTT</li><li>HiveMQ</li><li>Node-RED</li></ul>
@@ -175,7 +187,7 @@
 
 <article class="proj glass" data-reveal>
 <div class="pvis" aria-hidden="true"><svg viewBox="0 0 120 70" class="v-vision"><rect x="14" y="8" width="54" height="54" rx="4"/><path d="M32 50V30l6-8 4 10 4-12 4 12 3-6v24z"/><g class="grid"><path d="M14 26h54M14 44h54M32 8v54M50 8v54"/></g><path class="bar" d="M80 20h28M80 32h20M80 44h24"/></svg></div>
-<span class="pnum">04 · ACADEMIC PROJECT</span>
+<span class="pnum">05 · ACADEMIC PROJECT</span>
 <h3>Sign language recognition</h3>
 <p>Gesture recognition system built with MATLAB, using image processing, computer vision and machine learning to classify sign language gestures.</p>
 <ul class="chips"><li>MATLAB</li><li>Image processing</li><li>Computer vision</li><li>Machine learning</li></ul>
@@ -183,7 +195,7 @@
 
 <article class="proj glass" data-reveal>
 <div class="pvis" aria-hidden="true"><svg viewBox="0 0 120 70" class="v-line"><path id="trk" class="track" d="M8 52 C30 52 30 18 56 18 S86 52 112 30"/><g class="car"><rect x="-6" y="-4" width="12" height="8" rx="2"/><animateMotion dur="5s" repeatCount="indefinite" rotate="auto"><mpath href="#trk"/></animateMotion></g></svg></div>
-<span class="pnum">05 · ACADEMIC PROJECT</span>
+<span class="pnum">06 · ACADEMIC PROJECT</span>
 <h3>Line-following robot</h3>
 <p>Autonomous robot that follows a track, using Pololu encoders, sensor fusion and PID control for accurate trajectory tracking.</p>
 <ul class="chips"><li>Pololu encoders</li><li>Sensor fusion</li><li>PID control</li><li>Embedded systems</li></ul>
